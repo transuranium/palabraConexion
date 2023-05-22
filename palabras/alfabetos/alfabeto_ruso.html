@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aprendiendo el alfabeto ruso</title>
+  <style>
+    .letter {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 50px;
+      font-size: 24px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Alfabeto ruso</h2>
+  
+  <div id="alphabet">
+    <div class="letter" data-letter="А">А</div>
+    <div class="letter" data-letter="Б">Б</div>
+    <div class="letter" data-letter="В">В</div>
+    <div class="letter" data-letter="Г">Г</div>
+    <div class="letter" data-letter="Д">Д</div>
+    <div class="letter" data-letter="Е">Е</div>
+    <div class="letter" data-letter="Ё">Ё</div>
+    <div class="letter" data-letter="Ж">Ж</div>
+    <div class="letter" data-letter="З">З</div>
+    <div class="letter" data-letter="И">И</div>
+    <div class="letter" data-letter="Й">Й</div></br>
+    <div class="letter" data-letter="К">К</div>
+    <div class="letter" data-letter="Л">Л</div>
+    <div class="letter" data-letter="М">М</div>
+    <div class="letter" data-letter="Н">Н</div>
+    <div class="letter" data-letter="О">О</div>
+    <div class="letter" data-letter="П">П</div>
+    <div class="letter" data-letter="Р">Р</div>
+    <div class="letter" data-letter="С">С</div>
+    <div class="letter" data-letter="Т">Т</div>
+    <div class="letter" data-letter="У">У</div>
+    <div class="letter" data-letter="Ф">Ф</div></br>
+    <div class="letter" data-letter="Х">Х</div>
+    <div class="letter" data-letter="Ц">Ц</div>
+    <div class="letter" data-letter="Ч">Ч</div>
+    <div class="letter" data-letter="Ш">Ш</div>
+    <div class="letter" data-letter="Щ">Щ</div>
+    <div class="letter" data-letter="Ъ">Ъ</div>
+    <div class="letter" data-letter="Ы">Ы</div>
+    <div class="letter" data-letter="Ь">Ь</div>
+    <div class="letter" data-letter="Э">Э</div>
+    <div class="letter" data-letter="Ю">Ю</div>
+    <div class="letter" data-letter="Я">Я</div>
+
+
+    <!-- Добавьте остальные буквы алфавита -->
+  </div>
+  
+  <div id="output"></div>
+  
+  <script>
+    // Обработчик клика на букве алфавита
+    function handleClick(event) {
+      const letter = event.target.dataset.letter;
+      document.getElementById('output').textContent = `Letra seleccionada: ${letter}`;
+      
+      // Воспроизведение голоса
+      const speechSynthesis = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(letter);
+      speechSynthesis.speak(utterance);
+    }
+    
+    // Получаем все элементы с классом "letter"
+    const letters = document.getElementsByClassName('letter');
+    
+    // Добавляем обработчик клика на каждую букву
+    for (let i = 0; i < letters.length; i++) {
+      letters[i].addEventListener('click', handleClick);
+    }
+  </script>
+</body>
+</html>

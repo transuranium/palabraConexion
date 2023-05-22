@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>phrases</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const words = [
+      {'esp': 'Explora la música con un enfoque musicoterapéutico', 'rus': 'Исследуйте музыку с музыкотерапевтическим подходом', 'eng': 'Explore music with a music therapy approach'},
+      {'esp': 'Revolución política y social', 'rus': 'Политическая и социальная революция', 'eng': 'Political and social revolution'},
+      {'esp': 'En la modernización de la función cultural', 'rus': 'В модернизации культурной функции', 'eng': 'In the modernization of cultural function'},
+      {'esp': 'La fotografía captura momentos mágicos', 'rus': 'Фотография запечатлевает волшебные моменты', 'eng': 'Photography captures magical moments'},
+      {'esp': 'Descubre la riqueza del turismo gastronómico', 'rus': 'Откройте для себя богатство гастрономического туризма', 'eng': ''},
+      {'esp': 'La historia revela los secretos del pasado', 'rus': 'История раскрывает секреты прошлого', 'eng': 'History reveals the secrets of the past'},
+      {'esp': 'Sumérgete en la magia de la literatura', 'rus': 'Погрузитесь в мир литературы', 'eng': 'Immerse yourself in the magic of literature'},
+      {'esp': 'La medicina cuida y sana', 'rus': 'Медицина заботится и лечит', 'eng': 'Medicine cares and heals'},
+      {'esp': 'El transporte conecta personas y lugares', 'rus': 'Транспорт связывает людей и места', 'eng': 'Transportation connects people and places'},
+      {'esp': 'La cultura enriquece nuestras vidas', 'rus': 'Культура обогащает нашу жизнь', 'eng': 'Culture enriches our lives'},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''},
+      // {'esp': '', 'rus': '', 'eng': ''}
+      
+      
+      // {'esp': '', 'rus': '', 'eng': ''},  
+
+    ];
+  
+    const form = document.querySelector('form');
+    const wordElem = document.getElementById('word');
+    const answerEspElem = document.getElementById('answer-rus');
+    const answerEngElem = document.getElementById('answer-eng');
+    const resultElem = document.getElementById('result');
+  
+    function training() {
+      const word = words[Math.floor(Math.random() * words.length)];
+      wordElem.textContent = `¿Cómo sonará la palabra '${word['esp']}' en ruso e inglés?`;
+      resultElem.textContent = '';
+      answerRusElem.value = '';
+      answerEngElem.value = '';
+    }
+  
+    function checkAnswer(event) {
+      event.preventDefault();
+      const word = wordElem.textContent.match(/'(.*)'/)[1];
+      const answerRus = answerRusElem.value.trim();
+      const answerEng = answerEngElem.value.trim();
+      if (answerEsp.toLowerCase() === word['rus'] && answerEng.toLowerCase() === word['eng']) {
+        resultElem.textContent = 'Correcto!';
+      } else {
+        resultElem.textContent = `Ruso: ${word['rus']}. Inglés: ${word['eng']}.`;
+      }
+    }
+  
+    form.addEventListener('submit', checkAnswer);
+  
+    training();
+  </script>
+  
+</head>
+<body>
+  <div>
+    <h1>Traducir frases a diferentes idiomas</h1>
+    <p id="word"></p>
+    <form>
+      <label for="answer-rus">Ruso:</label>
+      <input type="text" id="answer-rus" name="answer-rus"><br>
+      <label for="answer-eng">Inglés:</label>
+      <input type="text" id="answer-eng" name="answer-eng"><br>
+      <button type="submit">Controlar</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <footer>
+    <p>WhatsApp: +52 990 202 28 27</p>
+    <p>Correo electrónico: ayavonaamimi@gmail.com</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

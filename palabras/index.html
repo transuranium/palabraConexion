@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>adivina la palabra</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const words = [
+      {'esp': 'revolución', 'rus': 'революция', 'eng': 'revolution'},
+      {'esp': 'interés', 'rus': 'интерес', 'eng': 'interest'}, 
+      {'esp': 'política', 'rus': 'политика', 'eng': 'politics'},
+      {'esp': 'moderno', 'rus': 'модерн', 'eng': 'modern'}, 
+      {'esp': 'función', 'rus': 'функция', 'eng': 'function'}, 
+      {'esp': 'música', 'rus': 'музыка', 'eng': 'music'}, 
+      {'esp': 'computadora', 'rus': 'компьютер', 'eng': 'computer'}, 
+      {'esp': 'fotografía', 'rus': 'фотография', 'eng': 'photography'}, 
+      {'esp': 'televisión', 'rus': 'телевизор', 'eng': 'television'}, 
+      {'esp': 'turismo', 'rus': 'туризм', 'eng': 'tourism'},
+      {'esp': 'escuela', 'rus': 'школа', 'eng': 'school'},
+      {'esp': 'deporte', 'rus': 'спорт', 'eng': 'sport'},
+      {'esp': 'historia', 'rus': 'история', 'eng': 'history'},
+      {'esp': 'literatura', 'rus': 'литература', 'eng': 'literature'},
+      {'esp': 'medicina', 'rus': 'медицина', 'eng': 'medicine'},
+      {'esp': 'religión', 'rus': 'религия', 'eng': 'religion'},
+      {'esp': 'transporte', 'rus': 'транспорт', 'eng': 'transportation'}, 
+      {'esp': 'cultura', 'rus': 'культура', 'eng': 'culture'}, 
+      {'esp': 'biblioteca', 'rus': 'библиотека', 'eng': 'library'}, 
+      {'esp': 'educación', 'rus': 'образование', 'eng': 'education'}, 
+      {'esp': 'economía', 'rus': 'экономика', 'eng': 'economy'}, 
+      {'esp': 'clima', 'rus': 'климат', 'eng': 'climate'}, 
+      {'esp': 'tecnología', 'rus': 'технология', 'eng': 'technology'},
+      {'esp': 'geografía', 'rus': 'география', 'eng': 'geography'},
+      {'esp': 'psicología', 'rus': 'психология', 'eng': 'psychology'},
+      {'esp': 'sociología', 'rus': 'социология', 'eng': 'sociology'},
+      {'esp': 'lingüística', 'rus': 'лингвистика', 'eng': 'linguistics'},
+      {'esp': 'antropología', 'rus': 'антропология', 'eng': 'anthropology'},
+      {'esp': 'arqueología', 'rus': 'археология', 'eng': 'archaeology'},
+      {'esp': 'astronomía', 'rus': 'астрономия', 'eng': 'astronomy'},
+      {'esp': 'química', 'rus': 'химия', 'eng': 'chemistry'},
+      {'esp': 'física', 'rus': 'физика', 'eng': 'physics'},
+      {'esp': 'matemáticas', 'rus': 'математика', 'eng': 'mathematics'},
+      {'esp': 'botánica', 'rus': 'ботаника', 'eng': 'botany'},
+      {'esp': 'zoología', 'rus': 'зоология', 'eng': 'zoology'},
+      {'esp': 'ecología', 'rus': 'экология', 'eng': 'ecology'},
+      {'esp': 'virus', 'rus': 'вирус', 'eng': 'virus'},
+      {'esp': 'sistema', 'rus': 'система', 'eng': 'system'},
+      {'esp': 'información', 'rus': 'информация', 'eng': 'information'},
+      {'esp': 'ingeniería', 'rus': 'инженерия', 'eng': 'engineering'},
+      {'esp': 'plataforma', 'rus': 'платформа', 'eng': 'platform'}, 
+      {'esp': 'gramática', 'rus': 'грамматика', 'eng': 'grammar'},
+      {'esp': 'Ideal', 'rus': 'идеал', 'eng': 'Ideal'},
+      {'esp': 'central', 'rus': 'центральный', 'eng': 'central'},
+      {'esp': 'gastronómico', 'rus': 'гастрономический', 'eng': 'gastronomic'},
+      {'esp': 'extremo', 'rus': 'экстрим', 'eng': 'extreme'},
+      {'esp': 'olímpico', 'rus': 'олимпийский', 'eng': 'olympic'},
+      {'esp': 'critic', 'rus': 'критический', 'eng': 'critical'},
+      {'esp': 'expert', 'rus': 'эксперт', 'eng': 'expert'},
+      {'esp': 'racionalidad', 'rus': 'рациональность', 'eng': 'rationality'},
+      {'esp': 'público', 'rus': 'публичный', 'eng': 'public'},
+      {'esp': 'clínica', 'rus': 'клиника', 'eng': 'clinic'},
+      {'esp': 'infección', 'rus': 'инфекция', 'eng': 'infection'},
+      {'esp': 'inmunidad', 'rus': 'иммунитет', 'eng': 'immunity'},
+      {'esp': 'epidemia', 'rus': 'эпидемия', 'eng': 'epidemic'},
+      {'esp': 'automatización', 'rus': 'автоматизация', 'eng': 'automation'},
+      {'esp': 'tecnologías', 'rus': 'технологии', 'eng': 'technologies'},
+      {'esp': 'inmigración', 'rus': 'иммиграция', 'eng': 'immigration'},
+      {'esp': 'actor', 'rus': 'актёр', 'eng': 'actor'},{'esp': 'hospital', 'rus': 'госпиталь', 'eng': 'hospital'},
+      {'esp': 'hotel', 'rus': 'отель', 'eng': 'hotel'},
+      {'esp': 'regular', 'rus': 'регулярный', 'eng': 'regular'},
+      {'esp': 'instituto', 'rus': 'институт', 'eng': 'institute'},
+      {'esp': 'radio', 'rus': 'радио', 'eng': 'radio'},
+      {'esp': 'crisis', 'rus': 'кризис', 'eng': 'crisis'},
+      {'esp': 'teléfono', 'rus': 'телефон', 'eng': 'telephone'},
+      {'esp': 'doctor', 'rus': 'врач', 'eng': 'doctor'},
+      {'esp': 'factor', 'rus': 'фактор', 'eng': 'factor'},
+      {'esp': 'popular', 'rus': 'популярный', 'eng': 'popular'},
+      {'esp': 'grupo', 'rus': 'группа', 'eng': 'group'}, 
+      {'esp': 'manera', 'rus': 'манера', 'eng': 'manner'},
+      {'esp': 'minuto', 'rus': 'минута', 'eng': 'minute'},
+      {'esp': 'plan', 'rus': 'план', 'eng': 'plan'},
+      {'esp': 'problema', 'rus': 'проблема', 'eng': 'problem'},
+      {'esp': 'dólar', 'rus': 'доллар', 'eng': 'dollar'},
+      {'esp': 'programa', 'rus': 'программа', 'eng': 'program'},
+      {'esp': 'número', 'rus': 'номер', 'eng': 'number'},
+      {'esp': 'situación', 'rus': 'ситуация', 'eng': 'situation'},
+      {'esp': 'normal', 'rus': 'нормальный', 'eng': 'normal'},
+      {'esp': 'región', 'rus': 'регион', 'eng': 'region'},
+      {'esp': 'enero', 'rus': 'январь', 'eng': 'january'},
+      {'esp': 'febrero', 'rus': 'февраль', 'eng': 'february'},
+      {'esp': 'marzo', 'rus': 'март', 'eng': 'march'},
+      {'esp': 'abril', 'rus': 'апрель', 'eng': 'april'},
+      {'esp': 'mayo', 'rus': 'май', 'eng': 'may'},
+      {'esp': 'junio', 'rus': 'июнь', 'eng': 'june'},
+      {'esp': 'julio', 'rus': 'июль', 'eng': 'july'},
+      {'esp': 'agosto', 'rus': 'август', 'eng': 'august'},
+      {'esp': 'septiembre', 'rus': 'сентябрь', 'eng': 'september'},
+      {'esp': 'octubre', 'rus': 'октябрь', 'eng': 'october'},
+      {'esp': 'noviembre', 'rus': 'ноябрь', 'eng': 'november'},
+      {'esp': 'diciembre', 'rus': 'декабрь', 'eng': 'december'},
+      {'esp': 'maniobra', 'rus': 'маневр', 'eng': 'maneuver'},
+      {'esp': 'energía', 'rus': 'энергия', 'eng': 'energy'}
+      
+      // {'esp': '', 'rus': '', 'eng': ''},  
+
+    ];
+  
+    const form = document.querySelector('form');
+    const wordElem = document.getElementById('word');
+    const answerEspElem = document.getElementById('answer-rus');
+    const answerEngElem = document.getElementById('answer-eng');
+    const resultElem = document.getElementById('result');
+  
+    function training() {
+      const word = words[Math.floor(Math.random() * words.length)];
+      wordElem.textContent = `¿Cómo sonará la palabra '${word['esp']}' en ruso e inglés?`;
+      resultElem.textContent = '';
+      answerRusElem.value = '';
+      answerEngElem.value = '';
+    }
+  
+    function checkAnswer(event) {
+      event.preventDefault();
+      const word = wordElem.textContent.match(/'(.*)'/)[1];
+      const answerRus = answerRusElem.value.trim();
+      const answerEng = answerEngElem.value.trim();
+      if (answerEsp.toLowerCase() === word['rus'] && answerEng.toLowerCase() === word['eng']) {
+        resultElem.textContent = 'Correcto!';
+      } else {
+        resultElem.textContent = `Ruso: ${word['rus']}. Inglés: ${word['eng']}.`;
+      }
+    }
+  
+    form.addEventListener('submit', checkAnswer);
+  
+    training();
+  </script>
+  
+</head>
+<body>
+  <div>
+    <h1>Adivina la palabra en diferentes idiomas</h1>
+    <p id="word"></p>
+    <form>
+      <label for="answer-rus">Ruso:</label>
+      <input type="text" id="answer-rus" name="answer-rus"><br>
+      <label for="answer-eng">Inglés:</label>
+      <input type="text" id="answer-eng" name="answer-eng"><br>
+      <button type="submit">Controlar</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <div>
+    <a href="alfabetos/alfabeto_ruso.html" target="_blank">alfabeto ruso</a>
+  </div>
+  <footer>
+    <p>WhatsApp: +52 990 202 28 27</p>
+    <p>Correo electrónico: ayavonaamimi@gmail.com</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
