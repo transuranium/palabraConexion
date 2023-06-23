@@ -26,8 +26,6 @@ function training() {
   });
 }
 
-
-
 formEl.addEventListener('submit', function(e) {
   e.preventDefault();
   training();
