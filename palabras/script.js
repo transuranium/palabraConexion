@@ -5,11 +5,18 @@ const resultEl = document.getElementById('result');
 const formEl = document.querySelector('form');
 
 
+
+let currentIndex = 0; // Индекс текущего слова
+
 function training() {
-  const randomIndex = Math.floor(Math.random() * words.length);
-  const word = words[randomIndex];
+  if (currentIndex >= words.length) {
+    currentIndex = 0; // Если достигнут конец массива, сбрасываем индекс на 0
+  }
+  
+  const word = words[currentIndex];
   wordEl.innerText = word.esp;
   formEl.reset();
+
 
   formEl.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -30,7 +37,9 @@ function training() {
 
 formEl.addEventListener('submit', function(e) {
   e.preventDefault();
+  currentIndex++; // Переходим к следующему слову после каждого нажатия на кнопку submit
   training();
 });
 
 training();
+
